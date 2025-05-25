@@ -31,6 +31,24 @@
       </None>
     </ItemGroup>
 
+  <!-- 파일 자동 복사 설정 -->
+  <ItemGroup>
+    <None Include="haarcascade_frontalface_alt.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- 빌드 후 추가 파일 복사 -->
+  <Target Name="CopyAdditionalFiles" AfterTargets="Build">
+    <ItemGroup>
+      <FilesToCopy Include="haarcascade_frontalface_alt.xml" />
+    </ItemGroup>
+    <Copy SourceFiles="@(FilesToCopy)" 
+          DestinationFolder="$(OutputPath)" 
+          SkipUnchangedFiles="true" />
+    <Message Text="필수 파일들이 출력 디렉토리에 복사되었습니다." Importance="high" />
+  </Target>
+
  <Target Name="DownloadHaarCascade" BeforeTargets="Build">
     <MakeDir Directories="Resources" Condition="!Exists('Resources')" />
     <Exec Command="powershell -Command &quot;if (!(Test-Path 'Resources\haarcascade_frontalface_alt.xml')) { Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_alt.xml' -OutFile 'Resources\haarcascade_frontalface_alt.xml' }&quot;" Condition="!Exists('Resources\haarcascade_frontalface_alt.xml')" ContinueOnError="true" />

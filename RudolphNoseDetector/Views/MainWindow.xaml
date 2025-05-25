@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="Rudolph Nose Detector" Height="700" Width="1200"
         WindowStartupLocation="CenterScreen"
-        xmlns:local="clr-namespace:RudolphNoseDetector">
-    
+        xmlns:local="clr-namespace:RudolphNoseDetector"
+        WindowState="Normal">
+
+
     <Window.DataContext>
         <vm:MainViewModel />
     </Window.DataContext>
