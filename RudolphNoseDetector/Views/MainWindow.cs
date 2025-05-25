@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System;
 
-//using OpenCvSharp;
 
 
 namespace RudolphNoseDetector
@@ -10,8 +9,17 @@ namespace RudolphNoseDetector
     {
         public MainWindow()
         {
-            //InitializeComponent();
-            //DataContext = new MainWindow();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"예외 발생: {ex.Message}\n자세한 예외: {ex.InnerException?.Message}");
+                throw;
+            }
+            //Console.WriteLine("예외 발생: " + ex.Message);
+            //Console.WriteLine("자세한 예외: " + ex.InnerException?.Message);      
         }
 
         protected override void OnClosed(EventArgs e)
