@@ -1,0 +1,19 @@
+﻿<Application x:Class="RudolphNoseDetector.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!-- 컨버터들 -->
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        
+        <!-- Null to Visibility 컨버터 -->
+        <Style x:Key="NullToVisibilityConverter" TargetType="TextBlock">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding}" Value="{x:Null}">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </Style.Triggers>
+            <Setter Property="Visibility" Value="Collapsed"/>
+        </Style>
+    </Application.Resources>
+</Application>
