@@ -21,8 +21,9 @@
 
 ## 🏗️ 실행방법
 
-- 빌드 후 실행 시 오류가 발생할 경우
-- 해당 경로 rudolph-nose-detector\RudolphNoseDetector\Resources 에있는 파일을 전부 rudolph-nose-detector\RudolphNoseDetector\bin\Debug\net8.0-windows 경로로 복사해주세요
+- 빌드 후 실행 시 오류가 발생할 경우 (Haar Cascade Classifier 이슈)
+- rudolph-nose-detector\RudolphNoseDetector\Resources 에 있는 파일을
+- rudolph-nose-detector\RudolphNoseDetector\bin\Debug\net8.0-windows 경로로 복사해주세요
  
 1. 애플리케이션 시작 후
 - "이미지 선택" 버튼 클릭
