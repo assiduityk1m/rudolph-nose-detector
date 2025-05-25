@@ -24,7 +24,8 @@ namespace RudolphNoseDetector.Services
                 {
                     @"C:\opencv\data\haarcascades\haarcascade_frontalface_alt.xml",
                     @"haarcascade_frontalface_alt.xml",
-                    @"opencv_data\haarcascade_frontalface_alt.xml"
+                    @"opencv_data\haarcascade_frontalface_alt.xml",
+                    @"C:\Users\assid\rudolph-nose-detector\RudolphNoseDetector\Resources\haarcascade_frontalface_alt.xml"
                 };
 
                 bool loaded = false;

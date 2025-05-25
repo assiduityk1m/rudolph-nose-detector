@@ -15,7 +15,7 @@ public partial class App
     /// </summary>
     public App()
     {
-        var view = new MainWindow
+        var view = new mainwindow
         {
             DataContext = Activator.CreateInstance<MainViewModel>()
         };

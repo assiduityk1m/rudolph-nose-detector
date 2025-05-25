@@ -4,9 +4,14 @@
         <TargetFramework>net8.0-windows</TargetFramework>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
+        <EnableDefaultPageItems>false</EnableDefaultPageItems>
         <EnableWindowsTargeting>true</EnableWindowsTargeting>
-    <!-- Linux 환경에서 Windows 앱 빌드 허용 -->
+        <!-- Linux 환경에서 Windows 앱 빌드 허용 -->
     </PropertyGroup>
+
+    <ItemGroup>
+      <Page Include="Views\mainwindow.xaml" />
+    </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
@@ -17,4 +22,17 @@
       <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.11.0.20250507" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="Resources\haarcascade_frontalface_alt.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Include="Resources\*.xml">
+      	<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+ <Target Name="DownloadHaarCascade" BeforeTargets="Build">
+    <MakeDir Directories="Resources" Condition="!Exists('Resources')" />
+    <Exec Command="powershell -Command &quot;if (!(Test-Path 'Resources\haarcascade_frontalface_alt.xml')) { Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_alt.xml' -OutFile 'Resources\haarcascade_frontalface_alt.xml' }&quot;" Condition="!Exists('Resources\haarcascade_frontalface_alt.xml')" ContinueOnError="true" />
+  </Target>
 </Project>

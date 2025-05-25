@@ -1,4 +1,4 @@
-﻿<Window x:Class="RudolphNoseDetector.MainWindow"
+﻿<Window x:Class="RudolphNoseDetector.mainwindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,8 @@
         xmlns:vm="clr-namespace:RudolphNoseDetector.ViewModels"
         mc:Ignorable="d"
         Title="Rudolph Nose Detector" Height="700" Width="1200"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        xmlns:local="clr-namespace:RudolphNoseDetector">
     
     <Window.DataContext>
         <vm:MainViewModel />
@@ -48,8 +49,9 @@
             <!-- 로딩 인디케이터 -->
             <ProgressBar Width="100" Height="10" 
                          IsIndeterminate="{Binding IsProcessing}"
-                         Visibility="{Binding IsProcessing, Converter={StaticResource BooleanToVisibilityConverter}}"
+                         Visibility="{Binding IsProcessing}"
                          Margin="20,0,0,0" VerticalAlignment="Center"/>
+            <!-- Visibility="{Binding IsProcessing, Converter={StaticResource BooleanToVisibilityConverter}}" -->
         </StackPanel>
 
         <!-- 이미지 표시 영역 -->
@@ -74,7 +76,8 @@
                     <TextBlock Text="이미지를 선택하세요" 
                                HorizontalAlignment="Center" VerticalAlignment="Center"
                                FontSize="16" Foreground="#999999"
-                               Visibility="{Binding OriginalImage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                               Visibility="{Binding OriginalImage}"/>
+                               <!--Visibility="{Binding OriginalImage, Converter={StaticResource BooleanToVisibilityConverter}}"/>-->
                 </Grid>
             </Border>
 
@@ -92,7 +95,7 @@
                     <TextBlock Text="처리 결과가 여기에 표시됩니다" 
                                HorizontalAlignment="Center" VerticalAlignment="Center"
                                FontSize="16" Foreground="#999999"
-                               Visibility="{Binding ProcessedImage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                               Visibility="{Binding ProcessedImage}"/>
                 </Grid>
             </Border>
         </Grid>

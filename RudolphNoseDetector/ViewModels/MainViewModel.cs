@@ -20,6 +20,9 @@ namespace RudolphNoseDetector.ViewModels
         private string _statusMessage = "이미지를 선택하거나 웹캠을 시작하세요.";
         private bool _isProcessing = false;
 
+        // Haar Cascade 파일 경로
+        public string HaarCascadeFilePath { get; private set; }
+
         public MainViewModel()
         {
             _faceDetectionService = new FaceDetectionService();
@@ -27,7 +30,16 @@ namespace RudolphNoseDetector.ViewModels
             ProcessImageCommand = new RelayCommand(ExecuteProcessImage, CanProcessImage);
             StartWebcamCommand = new RelayCommand(ExecuteStartWebcam);
             ClearCommand = new RelayCommand(ExecuteClear);
+
+            // Haar Cascade 파일 경로 설정
+            HaarCascadeFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "haarcascade_frontalface_alt.xml");
+
+            if (!File.Exists(HaarCascadeFilePath))
+            {
+                throw new FileNotFoundException($"The required file 'haarcascade_frontalface_alt.xml' was not found at {HaarCascadeFilePath}. Please ensure it is placed in the application's base directory.");
+            }
         }
+
 
         #region Properties
 
